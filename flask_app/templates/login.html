@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/flask_app/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <title>Guild Member Hub</title>
+</head>
+<body>
+    <div class="nav">
+        <img src="/flask_app/static/guild.png" alt="Guild" class="logo">
+        <ul class="nav-links">
+            <li><a href="#">Return to Guild Member Hub</a></li>
+        </ul>
+    </div>
+    <h1 class="subtitle">Guild Member Hub</h1>
+    <div class="container">
+        <form action="/login" method="post" class="form"> 
+            <h3>Log in</h3>
+            <!--{% with messages = get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="alert alert-danger">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %} -->
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input type="text" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password: </label> 
+                <input type="password" name="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Log in" class="btn btn-success">
+            </div>
+        </form>
+    </div>
+    <br>
+    <div class="form">
+        <p>New to the Guild Member Hub? <a href="#">Register here →</a></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/flask_app/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <title>Guild Member Hub</title>
+</head>
+<body>
+    <div class="nav">
+        <img src="/flask_app/static/guild.png" alt="Guild" class="logo">
+        <ul class="nav-links">
+            <li><a href="#">Return to Guild Member Hub</a></li>
+            <li><button class="btn">Sign Out</button></li>
+        </ul>
+    </div>
+    <h1 class="subtitle">Guild Member Hub</h1>
+    <form action="/create/post" method="POST" class="form">
+        <h2>Edit Post</h2>
+        <!--{% with messages = get_flashed_messages(category_filter=['show']) %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}-->
+        <div class="form-group">
+            <label for="first_name">First Name: </label>
+            <input type="text" name="first_name" class="form-control">
+            <label for="employer">Employer: </label>
+            <input type="text" name="employer" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="program_type">Program Type: </label>
+            <select id="program_type" name="program_type" class="form-control">
+                <option value="highschool">High School Diploma</option>
+                <option value="certificate">Certificate or Bootcamp</option>
+                <option value="associates">Associate's Degree</option>
+                <option value="bachelors">Bachelor's Degree</option>
+                <option value="graduate">Graduate Degree</option>
+            </select>
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="comment" id="comment">Tell us why you decided to continue your education!</label><br>
+            <textarea name="comment" cols="80" rows="5" class="form-control"></textarea>
+        </div>
+        <div class="d-flex justify-content-end align-items-center">
+            <input type="submit" value="Post" class="btn btn-primary">
+        </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
