@@ -14,13 +14,47 @@
     <div class="nav">
         <img src="/flask_app/static/guild.png" alt="Guild" class="logo">
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#" class="active">My Profile</a></li>
-            <li><a href="#">Find Connections</a></li>
-            <li><button class="btn">Sign Out</button></li>
+            <li><a href="/support" class="btn">Return to Guild Support Central</a></li>
+            <li><a href="/logout" class="btn">Sign Out</a></li>
         </ul>
     </div>
     <h1 class="subtitle">Guild Member Hub</h1>
+    <div class="header">
+        <h2>Welcome, {{user.first_name}}!</h2> <!--ADD!!!!!! -->
+        <a href="/new/post" class="btn">Post your own story on the Guild Member Board HERE!</a>
+    </div>
+    <div class="leftcolumn">
+        <div>
+        {% for post in posts %}
+            <div class="card">
+                <h3>{{ post.employer }}</h3> <!--Add!!!!!!!!!-->
+                <h5>{{ post.program_type }} </h5>
+                <h5>Started on {{ post.start_date.strftime("%B %d %Y") }}</h5><br>
+                <p>{{ post.comment }}</p>
+                <div><br>
+                    {% if post.user_id == session.user_id %}
+                    <a href="/edit/post/{{post.id}}">Edit</a>
+                    <a href="/destroy/post/{{post.id}}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="rightcolumn">
+        <div class="card">
+            <h3>Guild Achievement Gallery</h3>
+            <a href="/gallery" class="btn-2">Visit Gallery</a>
+            <p>Celebrate milestones with fellow Guild members!</p>
+        </div>
+        <div class="card">
+            <form class="file-catcher" action="/">
+                <label for="files">Upload your own achievement!</label><br>
+                <input type="file" id="files" name="files" multiple><br><br>
+                <input type="submit" value="Upload image" class="btn-2">
+            </form>
+        </div>
+    </div>      
     <script src="script.js"></script>
 </body>
 </html>

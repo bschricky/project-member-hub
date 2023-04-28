@@ -14,20 +14,13 @@
     <div class="nav">
         <img src="/flask_app/static/guild.png" alt="Guild" class="logo">
         <ul class="nav-links">
-            <li><a href="#">Return to Guild Member Hub</a></li>
+            <li><a href="/support" class="btn">Return to Guild Support Central</a></li>
         </ul>
     </div>
     <h1 class="subtitle">Guild Member Hub</h1>
     <div class="container">
         <form action="/login" method="post" class="form"> 
             <h3>Log in</h3>
-            <!--{% with messages = get_flashed_messages(category_filter=['login']) %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p class="alert alert-danger">{{message}}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %} -->
             <div class="form-group">
                 <label for="email">Email: </label>
                 <input type="text" name="email" class="form-control">
@@ -36,6 +29,13 @@
                 <label for="password">Password: </label> 
                 <input type="password" name="password" class="form-control">
             </div>
+            {% with messages = get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="alert">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <div class="form-group">
                 <input type="submit" value="Log in" class="btn btn-success">
             </div>
@@ -43,7 +43,7 @@
     </div>
     <br>
     <div class="form">
-        <p>New to the Guild Member Hub? <a href="#">Register here →</a></p>
+        <p>New to the Guild Member Hub? <a href="/hub_register">Register here →</a></p>
     </div>
     <script src="script.js"></script>
 </body>

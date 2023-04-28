@@ -14,45 +14,46 @@
     <div class="nav">
         <img src="/flask_app/static/guild.png" alt="Guild" class="logo">
         <ul class="nav-links">
-            <li><a href="#">Return to Guild Member Hub</a></li>
-            <li><button class="btn">Sign Out</button></li>
+            <li><a href="/home" class="btn">Return to Guild Member Hub</a></li>
+            <li><a href="/logout" class="btn">Sign Out</a></li>
         </ul>
     </div>
     <h1 class="subtitle">Guild Member Hub</h1>
-    <form action="/create/post" method="POST" class="form">
+    <form action="/update/post" method="POST" class="form">
+        <input type="hidden" name="id" value={{edit.id}}>
         <h2>Edit Post</h2>
-        <!--{% with messages = get_flashed_messages(category_filter=['show']) %}
+        <div class="form-group">
+            <label for="first_name">First Name: </label>
+            <input type="text" name="first_name" class="form-control" value="{{edit.first_name}}">
+            <label for="employer">Employer: </label>
+            <input type="text" name="employer" class="form-control" value="{{edit.employer}}">
+        </div>
+        <div class="form-group">
+            <label for="program_type">Program Type: </label>
+            <select id="program_type" name="program_type" class="form-control" value="{{edit.program_type}}">
+                <option value="High School Diploma">High School Diploma</option>
+                <option value="Certificate or Bootcamp">Certificate or Bootcamp</option>
+                <option value="Associate's Degree">Associate's Degree</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Graduate Degree">Graduate Degree</option>
+            </select>
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" class="form-control" value="{{edit.start_date}}">
+        </div>
+        <div class="form-group">
+            <label for="comment" id="comment">Tell us why you decided to continue your education!</label><br>
+            <textarea name="comment" cols="80" rows="5" class="form-control">{{edit.comment}}</textarea>
+        </div>
+        {% with messages = get_flashed_messages(category_filter=['post']) %}
             {% if messages %}
-            <div class="alert alert-danger" role="alert">
+            <div class="alert" role="alert">
                 {% for message in messages %}
                 <p>{{message}}</p>
                 {% endfor %}
             </div>
             {% endif %}
-        {% endwith %}-->
-        <div class="form-group">
-            <label for="first_name">First Name: </label>
-            <input type="text" name="first_name" class="form-control">
-            <label for="employer">Employer: </label>
-            <input type="text" name="employer" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="program_type">Program Type: </label>
-            <select id="program_type" name="program_type" class="form-control">
-                <option value="highschool">High School Diploma</option>
-                <option value="certificate">Certificate or Bootcamp</option>
-                <option value="associates">Associate's Degree</option>
-                <option value="bachelors">Bachelor's Degree</option>
-                <option value="graduate">Graduate Degree</option>
-            </select>
-            <label for="start_date">Start Date:</label>
-            <input type="date" name="start_date" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="comment" id="comment">Tell us why you decided to continue your education!</label><br>
-            <textarea name="comment" cols="80" rows="5" class="form-control"></textarea>
-        </div>
-        <div class="d-flex justify-content-end align-items-center">
+        {% endwith %}
+        <div>
             <input type="submit" value="Post" class="btn btn-primary">
         </div>
     </form>

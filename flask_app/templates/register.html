@@ -14,20 +14,13 @@
     <div class="nav">
         <img src="/flask_app/static/guild.png" alt="Guild" class="logo">
         <ul class="nav-links">
-            <li><a href="#">Return to Login</a></li>
+            <li><a href="/hub_login" class="btn">Return to Login</a></li>
         </ul>
     </div>
     <h1 class="subtitle">Guild Member Hub</h1>
     <div class="container">
         <form action="/register" method="post" class="form"> 
             <h3>Sign up</h3>
-            <!--{% with messages = get_flashed_messages(category_filter=['register']) %} 
-                {% if messages %}
-                    {% for message in messages %}
-                        <p class="alert alert-danger">{{message}}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}-->
             <div class="form-group">
                 <label for="first_name">First Name: </label>
                 <input type="text" name="first_name" class="form-control">
@@ -48,6 +41,13 @@
                 <label for="confirm_password">Confirm Password: </label> 
                 <input type="password" name="confirm_password" class="form-control">
             </div>
+            {% with messages = get_flashed_messages(category_filter=['register']) %} 
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="alert">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <div class="form-group">
                 <input type="submit" value="Sign up" class="btn btn-primary">
             </div>
